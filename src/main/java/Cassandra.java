@@ -13,12 +13,13 @@ import java.util.UUID;
 
 
 public class Cassandra {
+   private static String clusterAddress = "52.27.37.210";
    Cluster cluster;
 
    public Session connect() {
       cluster = Cluster
               .builder()
-              .addContactPoint("52.27.37.210")
+              .addContactPoint(clusterAddress)
               .withRetryPolicy(new LoggingRetryPolicy(DowngradingConsistencyRetryPolicy.INSTANCE))
               .build();
       return cluster.connect("killr_video");
