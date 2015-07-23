@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'com.datastax.cassandra:cassandra-driver-core:2.1.7'
+  compile 'com.datastax.cassandra:cassandra-driver-mapping:2.1.7'
+}
+
+task cassandra(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'Cassandra'
+}
